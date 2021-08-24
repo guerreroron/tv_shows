@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es-cl">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="Base template plantilla Django Bootstrap JQuery JS">
+        <meta name="author" content="Ronald Guerrero 0071">
+        <meta name="keywords" content="Django TV SHOWS">
+        
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+        <!-- jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+        <!--FontAwesome-->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
+        
+        <!-- Mi CSS-->
+        <link rel="stylesheet" href="{% static 'tv_shows/css/my_styles.css' %}">
+        <link rel="icon" type="image/ico" href="{% static 'tv_shows/img/old-tv-vector-760x995.jpg' %}" alt="TV">
+        <!-- Mis JS-->
+        <!-- <script src="{% static 'assets/js/fecha_reloj.js' %}"></script> -->
+
+
+        <title>{% block title %}{% endblock %}</title>
+        
+    </head>
+    <body>
+        <!--Navbar-->
+        <div class="wrapper">            
+            <div class="container-fluid p-3 bg-light">               
+                
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <div class="container-fluid">
+                        <a class="navbar-brand" href="{% url 'tv_shows:home' %}">
+                            <img class="img-nav" src="{% static 'tv_shows/img/old-tv-vector-760x995.jpg' %}" alt="TV">
+                        </a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li class="nav-item"><a class="nav-link" href="{% url 'tv_shows:home' %}">Home</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{% url 'tv_shows:home' %}">TV Shows</a></li>                                
+                            </ul>                            
+                        </div>
+                    </div>
+                </nav>
+                {% block content %}{% endblock %}
+
+            </div>
+        </div>
+        <!-- Bootstrap Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    </body>
+</html>

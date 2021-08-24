@@ -1,0 +1,46 @@
+{% extends "tv_shows/base.html" %}
+
+{% block title %}Show | New{% endblock %}
+
+{% block content %}
+<div class="container mt-0">
+    <div class="row justify-content-center">        
+        <div class="col-md-6">
+            <h3 class="title mb-4">Add a new Show</h3>
+            <form action="/shows/create" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label class="form-label" for="title">Title</label>
+                    <input class="form-control" type="text" name="title" id="title" maxlength="100">
+                </div>
+                <div class="row my-3">
+                    <div class="col-6">
+                        <label for="network" class="form-label fw-bold">Network:</label>
+                        <select class="form-select" name="network" id="network">
+                            <option selected>Select Network</option>
+                                {% for i in network %}
+                                <option value="{{ i.id }}">{{ i.name }}</option>
+                                {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label class="form-label" for="release_date">Release date</label>
+                            <input class="form-control" type="date" name="release_date" id="release_date">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="description">Description</label>
+                    <textarea class="form-control" name="description" id="description" rows="5"></textarea>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-outline-secondary mt-4"></input>
+                </div>                
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
